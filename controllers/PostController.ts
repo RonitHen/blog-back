@@ -12,7 +12,6 @@ export class PostController {
     }
 
     async addPost(req: Request, res: Response): Promise<void> {
-
         const postData = req.body;
         const post = new Post(postData.id, postData.title, postData.body, postData.date,  postData.img_url, postData.posted_by);
 

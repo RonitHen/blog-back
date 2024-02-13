@@ -4,15 +4,16 @@ import { PostDataAccessSQL } from '../DAL/PostDataAccessSQL';
 import Post from '../models/Post';
 import {test, describe} from "node:test";
 
+const testPost = new Post(123456667, "test post", "body test", new Date(), "img url", "ronit")
 describe('POST /api/posts', () => {
     test('should add a new post', async () => {
         const postData = {
             title: 'Test Post',
-            content: 'This is a test post',
+            body: 'This is a test post',
             date: '2024-05-05',
         };
 
-        const response = await request(app).post('/api/posts').send(postData);
+        const response = await request(app).post('/api/posts').send(testPost);
 
         expect(response.statusCode).toBe(201);
 

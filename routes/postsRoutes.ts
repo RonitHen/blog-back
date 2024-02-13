@@ -1,35 +1,35 @@
-import express, { Request, Response } from "express";
-import { PostController } from "../controllers/PostController";
-import { PostService } from "../services/PostService";
-import { PostDataAccessSQL } from "../DAL/PostDataAccessSQL";
+import express, {Request, Response} from "express";
+import {PostController} from "../controllers/PostController";
+import {PostService} from "../services/PostService";
+import {PostDataAccessSQL} from "../DAL/PostDataAccessSQL";
 
 const router = express.Router();
 const postController = new PostController(
-  new PostService(new PostDataAccessSQL())
+    new PostService(new PostDataAccessSQL())
 );
 
 router.post(
-  "/",
-  async (req: Request, res: Response) => await postController.addPost(req, res)
+    "/",
+    async (req: Request, res: Response) => await postController.addPost(req, res)
 );
 router.get(
-  "/:id",
-  async (req: Request, res: Response) => await postController.getPost(req, res)
+    "/:id",
+    async (req: Request, res: Response) => await postController.getPost(req, res)
 );
 router.put(
-  "/:id",
-  async (req: Request, res: Response) =>
-    await postController.updatePost(req, res)
+    "/:id",
+    async (req: Request, res: Response) =>
+        await postController.updatePost(req, res)
 );
 router.delete(
-  "/:id",
-  async (req: Request, res: Response) =>
-    await postController.deletePost(req, res)
+    "/:id",
+    async (req: Request, res: Response) =>
+        await postController.deletePost(req, res)
 );
 router.get(
-  "/",
-  async (req: Request, res: Response) =>
-    await postController.getAllPosts(req, res)
+    "/",
+    async (req: Request, res: Response) =>
+        await postController.getAllPosts(req, res)
 );
 
 export default router;
